@@ -1,0 +1,60 @@
+import random
+import time
+
+print("Welcome to Quizze! The new, hit trivia game.")
+time.sleep(2.5)
+name = input("Let's get started. What is your first name?\n")
+print("Hi " + name + "! I am Tom Cruise, the host of Quizze. I'll be asking you questions and giving you 3 possible answers.")
+time.sleep(4)
+print("It is your job to guess which answer is the correct one. But remember, in Quizze if you get a question wrong... It's game over.")
+time.sleep(5)
+ans = input("Are you ready to play?\n").lower()
+if ans != "yes":
+    print("Maybe another time")
+    quit()
+
+questions = [
+    "What year was the very first model of the iPhone released?\n(A) 2011\n(B) 2009\n(C) 2007\n",
+
+    "What’s the shortcut for the “copy” function on most computers?\n(A) ctrl c\n(B) ctrl v\n(C) shift n\n",
+
+    "What is often seen as the smallest unit of memory?\n(A) 1 Kilobyte\n(B) 1 Nibble\n(C) 1 Bit\n",
+
+    "What is Java a type of?\n(A) Operating System\n(B) Programming Language\n(C) Web Browser\n",
+
+    "What does “HTTP” stand for?\n(A) HyperText Transfer Procedure\n(B) HyperText Terminal Procedure\n(C) HyperText Transfer Protocol\n",
+
+    "Which email service is owned by Microsoft?\n(A) AOL\n(B) Ymail\n(C) Hotmail\n",
+
+    "Google Chrome, Safari, Firefox, and Explorer are different types of what?\n(A) Operating Systems\n(B) Web Browsers\n(C) Email Services\n",
+
+    "What was Twitter’s original name?\n(A) Tweeter\n(B) Chatter\n(C) twttr\n"
+]
+
+print("Ok then, let's get started.")
+time.sleep(2)
+answers = ["c", "a", "a", "b", "c", "c", "b", "c"]
+new = [0, 1, 2, 3, 4, 5, 6, 7]
+score = 0
+
+while score < 8:
+    x = random.choice(new)
+    y = input("Tom Cruise: " + questions[x]).lower()
+    if y != answers[x]:
+        print("Unfortunately that is wrong. The correct answer was " + answers[x] + "." + " Which means the game ends here.")
+        time.sleep(2.5)
+        print("You got " + str(score) + " questions right though!")
+        time.sleep(1)
+        quit()
+    else:
+        score += 1
+        print("That is correct!")
+        time.sleep(1.5)
+        if score == 7:
+            break
+        print("Next question.")
+        time.sleep(2)
+        new.remove(x)
+        continue
+
+print("Congratulations " + name.upper() + " YOU JUST WON QUIZZE BY GETTING ALL 8 QUESTIONS IN A ROW, RIGHT!")
